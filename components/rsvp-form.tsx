@@ -5,15 +5,23 @@ import { useState, useTransition } from "react";
 export type RsvpFormCopy = {
   fullName: string;
   fullNamePlaceholder: string;
+  phoneNumber: string;
+  phoneNumberPlaceholder: string;
   country: string;
   countryPlaceholder: string;
   attendance: string;
   yes: string;
   no: string;
   maybe: string;
+  attendanceDays: string;
+  attendanceAllDays: string;
+  attendanceWeddingOnly: string;
+  attendanceDaysUnsure: string;
   guests: string;
   message: string;
   messagePlaceholder: string;
+  questions: string;
+  questionsPlaceholder: string;
   sending: string;
   submit: string;
   success: string;
@@ -51,6 +59,9 @@ export function RsvpForm({ copy }: { copy: RsvpFormCopy }) {
             country: String(formData.get("country") || ""),
             guests: Number(formData.get("guests") || 1),
             message: String(formData.get("message") || ""),
+            phoneNumber: String(formData.get("phoneNumber") || ""),
+            questions: String(formData.get("questions") || ""),
+            attendanceDays: String(formData.get("attendanceDays") || ""),
           };
 
           try {
@@ -96,6 +107,19 @@ export function RsvpForm({ copy }: { copy: RsvpFormCopy }) {
           />
         </Field>
 
+        <Field label={copy.phoneNumber} htmlFor="phoneNumber">
+          <input
+            id="phoneNumber"
+            name="phoneNumber"
+            inputMode="tel"
+            pattern="[+0-9()\\-\\s]+"
+            className="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-base outline-none transition focus:border-olive-300"
+            placeholder={copy.phoneNumberPlaceholder}
+          />
+        </Field>
+      </div>
+
+      <div className="grid gap-5 md:grid-cols-2">
         <Field label={copy.country} htmlFor="country">
           <input
             id="country"
@@ -115,6 +139,18 @@ export function RsvpForm({ copy }: { copy: RsvpFormCopy }) {
         </div>
       </Field>
 
+      <Field label={copy.attendanceDays}>
+        <div className="grid gap-3">
+          <Choice label={copy.attendanceAllDays} value="all_days" name="attendanceDays" />
+          <Choice
+            label={copy.attendanceWeddingOnly}
+            value="wedding_day_only"
+            name="attendanceDays"
+          />
+          <Choice label={copy.attendanceDaysUnsure} value="not_sure_yet" name="attendanceDays" />
+        </div>
+      </Field>
+
       <div className="grid gap-5 md:grid-cols-[minmax(0,220px)_1fr]">
         <Field label={copy.guests} htmlFor="guests">
           <input
@@ -128,7 +164,9 @@ export function RsvpForm({ copy }: { copy: RsvpFormCopy }) {
             className="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-base outline-none transition focus:border-olive-300"
           />
         </Field>
+      </div>
 
+      <div className="grid gap-5">
         <Field label={copy.message} htmlFor="message">
           <textarea
             id="message"
@@ -136,6 +174,16 @@ export function RsvpForm({ copy }: { copy: RsvpFormCopy }) {
             rows={4}
             className="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-base outline-none transition focus:border-olive-300"
             placeholder={copy.messagePlaceholder}
+          />
+        </Field>
+
+        <Field label={copy.questions} htmlFor="questions">
+          <textarea
+            id="questions"
+            name="questions"
+            rows={4}
+            className="w-full rounded-2xl border border-stone-200 bg-white/90 px-4 py-3 text-base outline-none transition focus:border-olive-300"
+            placeholder={copy.questionsPlaceholder}
           />
         </Field>
       </div>
@@ -179,10 +227,10 @@ function Field({
   );
 }
 
-function Choice({ label, value }: { label: string; value: string }) {
+function Choice({ label, value, name = "attendance" }: { label: string; value: string; name?: string }) {
   return (
     <label className="group relative cursor-pointer">
-      <input type="radio" name="attendance" value={value} required className="peer sr-only" />
+      <input type="radio" name={name} value={value} required className="peer sr-only" />
       <span className="flex rounded-full border border-stone-200 bg-white/90 px-5 py-3 text-center text-sm uppercase tracking-[0.12em] text-stoneink/75 transition peer-checked:border-blush-300 peer-checked:bg-blush-100/70 peer-checked:text-stoneink group-hover:-translate-y-0.5">
         {label}
       </span>

@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { AdminDeleteButton } from "@/components/admin-delete-button";
 import { AdminLogoutButton } from "@/components/admin-logout-button";
-import { buildDashboardStats, formatAttendance, formatDate } from "@/lib/utils";
+import { buildDashboardStats, formatAttendance, formatAttendanceDays, formatDate } from "@/lib/utils";
 import { fetchRsvps, hasSupabaseConfig } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
@@ -28,12 +28,14 @@ export default async function AdminPage() {
           <AdminLogoutButton />
         </div>
 
-        <section className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+        <section className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-7">
           <StatCard label="Total responses" value={String(stats.totalResponses)} />
           <StatCard label="Attending replies" value={String(stats.attendingResponses)} />
           <StatCard label="Guests coming" value={String(stats.attendingGuests)} />
           <StatCard label="Guests not coming" value={String(stats.notAttendingGuests)} />
           <StatCard label="Guests not sure" value={String(stats.notSureGuests)} />
+          <StatCard label="Guests all days" value={String(stats.allDaysGuests)} />
+          <StatCard label="Guests wedding day only" value={String(stats.weddingDayOnlyGuests)} />
         </section>
 
         <section className="mt-8 grid gap-8 xl:grid-cols-[0.9fr_1.1fr]">
@@ -73,7 +75,10 @@ export default async function AdminPage() {
                     <th className="px-6 py-4">Attendance</th>
                     <th className="px-6 py-4">Country</th>
                     <th className="px-6 py-4">Guests</th>
+                    <th className="px-6 py-4">Days</th>
+                    <th className="px-6 py-4">Phone</th>
                     <th className="px-6 py-4">Message</th>
+                    <th className="px-6 py-4">Questions</th>
                     <th className="px-6 py-4">Submitted</th>
                     <th className="px-6 py-4 text-right">Actions</th>
                   </tr>
@@ -88,7 +93,12 @@ export default async function AdminPage() {
                         </td>
                         <td className="px-6 py-5 text-stoneink/75">{row.country}</td>
                         <td className="px-6 py-5 text-stoneink/75">{row.guests}</td>
+                        <td className="px-6 py-5 text-stoneink/75">
+                          {formatAttendanceDays(row.attendance_days)}
+                        </td>
+                        <td className="px-6 py-5 text-stoneink/75">{row.phone_number || "—"}</td>
                         <td className="px-6 py-5 text-stoneink/75">{row.message || "—"}</td>
+                        <td className="px-6 py-5 text-stoneink/75">{row.questions || "—"}</td>
                         <td className="px-6 py-5 text-stoneink/75">{formatDate(row.created_at)}</td>
                         <td className="px-6 py-5 text-right">
                           <AdminDeleteButton id={row.id} name={row.full_name} />
@@ -97,7 +107,7 @@ export default async function AdminPage() {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={7} className="px-6 py-10 text-center text-stoneink/65">
+                      <td colSpan={10} className="px-6 py-10 text-center text-stoneink/65">
                         No RSVP responses yet.
                       </td>
                     </tr>

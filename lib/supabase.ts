@@ -37,11 +37,29 @@ export async function saveRsvp(input: RsvpInput) {
     country: input.country.trim(),
     guests: input.guests,
     message: input.message?.trim() || null,
+    phone_number: input.phoneNumber?.trim() || null,
+    questions: input.questions?.trim() || null,
+    attendance_days: input.attendanceDays,
   });
 
   if (error) {
+    console.error("[RSVP] Supabase insert failed", {
+      tableName,
+      message: error.message,
+      details: error.details,
+      hint: error.hint,
+      code: error.code,
+    });
     throw new Error(error.message);
   }
+
+  console.info("[RSVP] Supabase insert succeeded", {
+    tableName,
+    fullName: input.fullName,
+    country: input.country,
+    attendance: input.attendance,
+    attendanceDays: input.attendanceDays,
+  });
 }
 
 export async function fetchRsvps() {
@@ -50,7 +68,9 @@ export async function fetchRsvps() {
 
   const { data, error } = await supabase
     .from(tableName)
-    .select("id, full_name, attendance, country, guests, message, created_at")
+    .select(
+      "id, full_name, attendance, country, guests, message, phone_number, questions, attendance_days, created_at"
+    )
     .order("created_at", { ascending: false });
 
   if (error) {

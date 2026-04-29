@@ -78,9 +78,14 @@ The RSVP table stores:
 - full name
 - country
 - attendance answer
+- attendance days
 - number of guests
 - optional message
+- phone number
+- questions for the couple
 - submission date
+
+If you add new RSVP fields later, run [supabase/schema.sql](/Users/dashapasternak/Documents/rubin-julia-wedding/supabase/schema.sql) again in Supabase SQL Editor so the table stays in sync.
 
 Default table name:
 

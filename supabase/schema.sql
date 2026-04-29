@@ -5,8 +5,27 @@ create table if not exists public.wedding_rsvps (
   country text not null,
   guests integer not null check (guests >= 1 and guests <= 10),
   message text,
+  phone_number text,
+  questions text,
+  attendance_days text not null check (attendance_days in ('all_days', 'wedding_day_only', 'not_sure_yet')) default 'not_sure_yet',
   created_at timestamptz not null default now()
 );
+
+alter table public.wedding_rsvps
+  add column if not exists phone_number text;
+
+alter table public.wedding_rsvps
+  add column if not exists questions text;
+
+alter table public.wedding_rsvps
+  add column if not exists attendance_days text not null default 'not_sure_yet';
+
+alter table public.wedding_rsvps
+  drop constraint if exists wedding_rsvps_attendance_days_check;
+
+alter table public.wedding_rsvps
+  add constraint wedding_rsvps_attendance_days_check
+  check (attendance_days in ('all_days', 'wedding_day_only', 'not_sure_yet'));
 
 create index if not exists wedding_rsvps_created_at_idx
   on public.wedding_rsvps (created_at desc);

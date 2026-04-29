@@ -1,8 +1,14 @@
 import { NextResponse } from "next/server";
 import { hasSupabaseConfig, saveRsvp } from "@/lib/supabase";
-import type { AttendanceStatus, RsvpInput } from "@/lib/types";
+import type { AttendanceDays, AttendanceStatus, RsvpInput } from "@/lib/types";
 
 const validAttendance = new Set<AttendanceStatus>(["yes", "no", "maybe"]);
+const validAttendanceDays = new Set<AttendanceDays>([
+  "all_days",
+  "wedding_day_only",
+  "not_sure_yet",
+]);
+const phonePattern = /^[+\d\s()-]+$/;
 
 export async function POST(request: Request) {
   try {
@@ -29,6 +35,16 @@ export async function POST(request: Request) {
       country: body.country!.trim(),
       guests: Number(body.guests),
       message: body.message?.trim() || "",
+      phoneNumber: body.phoneNumber?.trim() || "",
+      questions: body.questions?.trim() || "",
+      attendanceDays: body.attendanceDays!,
+    });
+
+    console.info("[RSVP API] Submission saved successfully", {
+      fullName: body.fullName,
+      country: body.country,
+      attendance: body.attendance,
+      attendanceDays: body.attendanceDays,
     });
 
     return NextResponse.json({
@@ -36,6 +52,7 @@ export async function POST(request: Request) {
       message: "Thank you! Your response has been received.",
     });
   } catch (error) {
+    console.error("[RSVP API] Submission failed", error);
     return NextResponse.json(
       {
         error:
@@ -59,9 +76,17 @@ function validateRsvp(body: Partial<RsvpInput>) {
     return "Please enter your country.";
   }
 
+  if (body.phoneNumber && (!phonePattern.test(body.phoneNumber.trim()) || body.phoneNumber.trim().length < 5)) {
+    return "Please enter a valid phone number.";
+  }
+
   const guests = Number(body.guests);
   if (!Number.isInteger(guests) || guests < 1 || guests > 10) {
     return "Number of guests must be between 1 and 10.";
+  }
+
+  if (!body.attendanceDays || !validAttendanceDays.has(body.attendanceDays)) {
+    return "Please choose which days you will attend.";
   }
 
   return null;

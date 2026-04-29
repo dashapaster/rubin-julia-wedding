@@ -25,7 +25,12 @@ type PageCopy = {
     eyebrow: string;
     title: string;
     description: string;
-    quote: string[];
+    content: {
+      lead: string;
+      quote: string[];
+      paragraphs: string[];
+      signature: string[];
+    };
   };
   invitation: {
     eyebrow: string;
@@ -90,13 +95,26 @@ const translations: Record<Language, PageCopy> = {
       eyebrow: "A Love Written by God",
       title: "Our Story",
       description:
-        "A love story held gently in divine timing, with grace that feels deeper than chance and more beautiful than anything we could have written alone.",
-      quote: [
-        "When the Lord writes your love story, it carries a beauty no human could ever create.",
-        "What Jesus writes is never shallow.",
-        "Never random. Never late.",
-        "It is full of purpose, full of glory, and full of love.",
-      ],
+        "A story shaped by God's perfect timing, His faithfulness, and a love more beautiful than anything we could have written on our own.",
+      content: {
+        lead:
+          "When the Lord writes your love story, it carries a beauty no human could ever create.",
+        quote: [
+          "What Jesus writes is never shallow.",
+          "Never random.",
+          "Never late.",
+          "It is full of purpose, full of glory, and full of love.",
+        ],
+        paragraphs: [
+          "Our story is a testimony of His timing and His faithfulness.",
+          "The Lord connected us across countries, cultures, distance, and seasons of waiting. What could have seemed impossible to people was never impossible for God. He knew how to lead our steps, how to open the right doors, how to prepare our hearts, and how to bring us to one another in His perfect way.",
+          "Through different nations, different journeys, and many miles between us, Jesus was writing something beautiful. He was teaching us to trust Him deeper, to wait with hope, and to believe that love born from His heart is always worth the journey.",
+          "This is more than our love story.\nIt is a story of God's faithfulness.",
+          "And now, with full hearts, we are so grateful to begin this new chapter together as husband and wife, surrounded by the people we love most.",
+          "Thank you for being part of our story and celebrating with us the beautiful thing the Lord has done.",
+        ],
+        signature: ["With love,", "Julia & Rubin"],
+      },
     },
     invitation: {
       eyebrow: "The Invitation",
@@ -161,15 +179,23 @@ const translations: Record<Language, PageCopy> = {
       form: {
         fullName: "Full name",
         fullNamePlaceholder: "Your full name",
+        phoneNumber: "Phone number",
+        phoneNumberPlaceholder: "+1 234 567 890",
         country: "Country",
         countryPlaceholder: "Country of departure",
         attendance: "Will you attend?",
         yes: "Yes, I will come",
         no: "No, I can’t come",
         maybe: "Not sure yet",
+        attendanceDays: "Which days will you attend?",
+        attendanceAllDays: "I will attend all days (September 4-6)",
+        attendanceWeddingOnly: "I will attend only the wedding day (September 5)",
+        attendanceDaysUnsure: "Not sure yet",
         guests: "Number of guests",
         message: "Optional message",
         messagePlaceholder: "Share travel details, a note, or a blessing",
+        questions: "Do you have any questions for us?",
+        questionsPlaceholder: "Write your questions here",
         sending: "Sending...",
         submit: "Send RSVP",
         success: "Thank you! Your response has been received.",
@@ -200,13 +226,26 @@ const translations: Record<Language, PageCopy> = {
       eyebrow: "Любовь, написанная Богом",
       title: "Наша история",
       description:
-        "История любви, написанная Богом в совершенное время, с глубиной и красотой, которые невозможно было бы придумать самим.",
-      quote: [
-        "Когда Господь пишет вашу историю любви, в ней есть красота, которую не смог бы создать ни один человек.",
-        "То, что пишет Иисус, никогда не бывает поверхностным.",
-        "Никогда случайным. Никогда не запоздалым.",
-        "В этом всегда есть смысл, слава и любовь.",
-      ],
+        "История, рожденная в Божье совершенное время, наполненная Его верностью и любовью, прекраснее которой мы сами никогда не смогли бы придумать.",
+      content: {
+        lead:
+          "Когда Господь пишет вашу историю любви, в ней есть красота, которую не смог бы создать ни один человек.",
+        quote: [
+          "То, что пишет Иисус, никогда не бывает поверхностным.",
+          "Никогда не бывает случайным.",
+          "Никогда не приходит слишком поздно.",
+          "В этом всегда есть смысл, слава и любовь.",
+        ],
+        paragraphs: [
+          "Наша история — это свидетельство Его времени и Его верности.",
+          "Господь соединил нас через страны, культуры, расстояния и сезоны ожидания. То, что людям могло казаться невозможным, никогда не было невозможным для Бога. Он знал, как направить наши шаги, как открыть нужные двери, как приготовить наши сердца и как привести нас друг к другу Своим совершенным путём.",
+          "Через разные страны, разные пути и многие километры между нами Иисус писал нечто прекрасное. Он учил нас глубже доверять Ему, ждать с надеждой и верить, что любовь, рождённая в Его сердце, всегда стоит этого пути.",
+          "Это больше, чем просто наша история любви.\nЭто история Божьей верности.",
+          "И теперь, с сердцами, полными благодарности, мы счастливы начать эту новую главу вместе как муж и жена, в окружении самых любимых людей.",
+          "Спасибо, что вы часть нашей истории и празднуете вместе с нами то прекрасное, что совершил Господь.",
+        ],
+        signature: ["С любовью,", "Юлия и Рубин"],
+      },
     },
     invitation: {
       eyebrow: "Приглашение",
@@ -271,15 +310,23 @@ const translations: Record<Language, PageCopy> = {
       form: {
         fullName: "Полное имя",
         fullNamePlaceholder: "Ваше полное имя",
+        phoneNumber: "Номер телефона",
+        phoneNumberPlaceholder: "+7 999 123 45 67",
         country: "Страна",
         countryPlaceholder: "Страна, из которой вы приедете",
         attendance: "Сможете ли вы приехать?",
         yes: "Да, я приеду",
         no: "Нет, не смогу",
         maybe: "Пока не уверена / не уверен",
+        attendanceDays: "В какие дни вы планируете быть с нами?",
+        attendanceAllDays: "Я буду все дни (4-6 сентября)",
+        attendanceWeddingOnly: "Я буду только в день свадьбы (5 сентября)",
+        attendanceDaysUnsure: "Пока не уверена / не уверен",
         guests: "Количество гостей",
         message: "Сообщение",
         messagePlaceholder: "Детали поездки, пожелание или тёплая заметка",
+        questions: "Есть ли у вас вопросы к нам?",
+        questionsPlaceholder: "Напишите ваш вопрос здесь",
         sending: "Отправляем...",
         submit: "Отправить RSVP",
         success: "Спасибо! Ваш ответ получен.",
@@ -310,13 +357,26 @@ const translations: Record<Language, PageCopy> = {
       eyebrow: "Eine von Gott geschriebene Liebe",
       title: "Unsere Geschichte",
       description:
-        "Eine Liebesgeschichte in Gottes vollkommenem Timing, voller Tiefe und Schönheit, wie wir sie selbst niemals hätten schreiben können.",
-      quote: [
-        "Wenn der Herr eure Liebesgeschichte schreibt, trägt sie eine Schönheit in sich, die kein Mensch erschaffen könnte.",
-        "Was Jesus schreibt, ist niemals oberflächlich.",
-        "Niemals zufällig. Niemals zu spät.",
-        "Es ist voller Sinn, voller Herrlichkeit und voller Liebe.",
-      ],
+        "Eine Geschichte, getragen von Gottes vollkommenem Timing, Seiner Treue und einer Liebe, schöner als alles, was wir selbst je hätten schreiben können.",
+      content: {
+        lead:
+          "Wenn der Herr eure Liebesgeschichte schreibt, trägt sie eine Schönheit in sich, die kein Mensch erschaffen könnte.",
+        quote: [
+          "Was Jesus schreibt, ist niemals oberflächlich.",
+          "Niemals zufällig.",
+          "Niemals zu spät.",
+          "Es ist voller Sinn, voller Herrlichkeit und voller Liebe.",
+        ],
+        paragraphs: [
+          "Unsere Geschichte ist ein Zeugnis Seines Timings und Seiner Treue.",
+          "Der Herr hat uns über Länder, Kulturen, Entfernungen und Zeiten des Wartens hinweg miteinander verbunden. Was Menschen unmöglich erscheinen konnte, war für Gott niemals unmöglich. Er wusste, wie Er unsere Schritte führen, die richtigen Türen öffnen, unsere Herzen vorbereiten und uns auf Seinem vollkommenen Weg zueinander bringen würde.",
+          "Durch verschiedene Nationen, unterschiedliche Wege und viele Kilometer zwischen uns schrieb Jesus etwas Wunderschönes. Er lehrte uns, Ihm tiefer zu vertrauen, voller Hoffnung zu warten und zu glauben, dass eine Liebe, die aus Seinem Herzen geboren ist, jeden Weg wert ist.",
+          "Das ist mehr als nur unsere Liebesgeschichte.\nEs ist eine Geschichte von Gottes Treue.",
+          "Und jetzt sind wir mit erfüllten Herzen unendlich dankbar, dieses neue Kapitel gemeinsam als Mann und Frau zu beginnen, umgeben von den Menschen, die wir am meisten lieben.",
+          "Danke, dass ihr Teil unserer Geschichte seid und mit uns das wunderbare Werk feiert, das der Herr getan hat.",
+        ],
+        signature: ["In Liebe,", "Julia & Rubin"],
+      },
     },
     invitation: {
       eyebrow: "Die Einladung",
@@ -381,15 +441,23 @@ const translations: Record<Language, PageCopy> = {
       form: {
         fullName: "Vollständiger Name",
         fullNamePlaceholder: "Ihr vollständiger Name",
+        phoneNumber: "Telefonnummer",
+        phoneNumberPlaceholder: "+49 123 456 789",
         country: "Land",
         countryPlaceholder: "Land, aus dem ihr anreist",
         attendance: "Werdet ihr teilnehmen?",
         yes: "Ja, ich komme",
         no: "Nein, ich kann leider nicht dabei sein",
         maybe: "Noch nicht sicher",
+        attendanceDays: "An welchen Tagen werdet ihr teilnehmen?",
+        attendanceAllDays: "Ich werde an allen Tagen da sein (4.-6. September)",
+        attendanceWeddingOnly: "Ich komme nur am Hochzeitstag (5. September)",
+        attendanceDaysUnsure: "Noch nicht sicher",
         guests: "Anzahl der Gäste",
         message: "Optionale Nachricht",
         messagePlaceholder: "Reisedetails, eine Nachricht oder ein lieber Wunsch",
+        questions: "Habt ihr Fragen an uns?",
+        questionsPlaceholder: "Schreibt eure Frage hier",
         sending: "Wird gesendet...",
         submit: "RSVP senden",
         success: "Vielen Dank! Eure Antwort wurde erhalten.",
@@ -497,15 +565,38 @@ export default function HomePage() {
                 description={copy.story.description}
               />
               <div className="relative mt-8 space-y-6 md:space-y-8">
-                <div className="overflow-hidden rounded-[1.6rem] border border-white/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.97),rgba(248,242,235,0.99))] px-5 py-8 text-center shadow-sm md:rounded-[2rem] md:px-12 md:py-14">
-                  <blockquote className="relative mx-auto max-w-4xl text-balance font-display text-xl leading-relaxed text-stoneink sm:text-3xl md:text-[2.35rem]">
-                    {copy.story.quote.map((line) => (
-                      <span key={line}>
-                        {line}
-                        <br />
-                      </span>
-                    ))}
-                  </blockquote>
+                <div className="rounded-[1.6rem] border border-white/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.97),rgba(248,242,235,0.99))] px-5 py-8 shadow-sm md:rounded-[2rem] md:px-12 md:py-14">
+                  <div className="mx-auto max-w-4xl">
+                    <p className="text-center font-display text-xl leading-relaxed text-stoneink sm:text-3xl md:text-[2.35rem]">
+                      {copy.story.content.lead}
+                    </p>
+
+                    <blockquote className="mt-8 text-center font-display text-lg leading-relaxed text-stoneink/88 sm:text-2xl md:text-[2rem]">
+                      {copy.story.content.quote.map((line) => (
+                        <span key={line}>
+                          {line}
+                          <br />
+                        </span>
+                      ))}
+                    </blockquote>
+
+                    <div className="mt-10 space-y-5 text-base leading-8 text-stoneink/78 md:text-lg md:leading-9">
+                      {copy.story.content.paragraphs.map((paragraph) => (
+                        <p key={paragraph} className="whitespace-pre-line">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+
+                    <div className="mt-8 border-t border-stone-200/70 pt-7 text-center">
+                      <p className="font-script text-2xl text-stoneink/85 md:text-3xl">
+                        {copy.story.content.signature[0]}
+                      </p>
+                      <p className="mt-2 font-display text-xl tracking-[0.08em] text-stoneink md:text-2xl">
+                        {copy.story.content.signature[1]}
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="grid gap-5 lg:grid-cols-2">

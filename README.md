@@ -120,6 +120,7 @@ The admin page shows:
 - number of guests
 - optional message
 - submission date
+- delete button for removing a response
 
 It also shows statistics:
 

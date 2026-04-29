@@ -19,6 +19,7 @@ type PageCopy = {
     cta: string;
     tapToPlay: string;
     soundOn: string;
+    mute: string;
   };
   story: {
     eyebrow: string;
@@ -83,6 +84,7 @@ const translations: Record<Language, PageCopy> = {
       cta: "RSVP",
       tapToPlay: "Tap for sound",
       soundOn: "Sound on",
+      mute: "Mute",
     },
     story: {
       eyebrow: "A Love Written by God",
@@ -190,14 +192,15 @@ const translations: Record<Language, PageCopy> = {
       date: "4-6 сентября",
       place: "Озеро Маджоре, Италия",
       cta: "RSVP",
-      tapToPlay: "Нажмите для звука",
-      soundOn: "Звук включен",
+      tapToPlay: "Включить звук",
+      soundOn: "Звук включён",
+      mute: "Без звука",
     },
     story: {
       eyebrow: "Любовь, написанная Богом",
       title: "Наша история",
       description:
-        "История любви, которую Бог написал в Своё время, с глубиной и красотой, которые невозможно придумать самим.",
+        "История любви, написанная Богом в совершенное время, с глубиной и красотой, которые невозможно было бы придумать самим.",
       quote: [
         "Когда Господь пишет вашу историю любви, в ней есть красота, которую не смог бы создать ни один человек.",
         "То, что пишет Иисус, никогда не бывает поверхностным.",
@@ -207,22 +210,22 @@ const translations: Record<Language, PageCopy> = {
     },
     invitation: {
       eyebrow: "Приглашение",
-      title: "С радостью в наших сердцах",
+      title: "С радостью в сердцах",
       description:
-        "Мы приглашаем вас разделить с нами день нашей свадьбы в прекрасной Италии, на озере Маджоре.",
+        "Мы с любовью приглашаем вас разделить с нами радость нашей свадьбы в прекрасной Италии, на озере Маджоре.",
       body:
-        "Среди горного воздуха, тихой воды, свечей и сентябрьского света нам будет невероятно дорого собрать самых любимых людей на свадебный уикенд, наполненный теплом, красотой и благодарностью.",
+        "Среди горного воздуха, спокойной воды, свечей и мягкого сентябрьского света нам будет бесконечно дорого собрать самых любимых людей на свадебный уикенд, наполненный теплом, красотой и благодарностью.",
     },
     schedule: {
       eyebrow: "Программа",
       title: "Свадебный уикенд у озера",
       description:
-        "Три сентябрьских дня, созданных для близости, праздника и красивых общих воспоминаний.",
+        "Три сентябрьских дня, созданных для близости, радости и красивых общих воспоминаний.",
       items: [
         {
           date: "4 сентября",
-          title: "Приезд и welcome gathering",
-          copy: "Мы начнем с объятий, разговоров на закате и спокойного первого вечера у озера.",
+          title: "Приезд и приветственный вечер",
+          copy: "Мы начнём этот уикенд с тёплых объятий, разговоров на закате и спокойного первого вечера у озера.",
         },
         {
           date: "5 сентября",
@@ -231,8 +234,8 @@ const translations: Record<Language, PageCopy> = {
         },
         {
           date: "6 сентября",
-          title: "Праздник / farewell brunch",
-          copy: "Еще одно утро вместе, чтобы побыть рядом, поблагодарить и сохранить этот уикенд в сердце.",
+          title: "Праздничный бранч и прощание",
+          copy: "Ещё одно утро вместе, чтобы побыть рядом, поблагодарить друг друга и сохранить этот уикенд в сердце.",
         },
       ],
     },
@@ -240,15 +243,15 @@ const translations: Record<Language, PageCopy> = {
       eyebrow: "Дресс-код",
       title: "Нежно, элегантно и вне времени",
       intro:
-        "Дорогие родные и друзья, мы так рады отметить этот особенный день вместе с вами в прекрасной Италии.",
+        "Дорогие родные и друзья, мы так счастливы разделить этот особенный день вместе с вами в прекрасной Италии.",
       atmosphereTitle: "Цвета свадьбы",
       atmosphereBody:
-        "Мы мечтаем создать мягкую, элегантную и вневременную атмосферу, вдохновлённую итальянским садом: природная красота, тёплый свет, белые цветы, оливковые деревья и романтика летнего вечера.",
+        "Для нашей свадьбы мы мечтаем создать мягкую, элегантную и вневременную атмосферу, вдохновлённую итальянским садом: природная красота, тёплый свет, белые цветы, оливковые деревья и романтика летнего вечера.",
       guideTitle: "Как пользоваться палитрой",
       guideBody:
-        "Мы подготовили эти визуальные карточки как самый понятный ориентир по образам. Палитра для девушек показывает мягкие романтичные оттенки, палитра для мужчин — классические природные тона, а последняя карточка показывает цвета и принты, которых мы просим избегать.",
+        "Мы подготовили эти визуальные карточки как самый понятный ориентир для образов. Палитра для девушек показывает мягкие романтичные оттенки, палитра для мужчин — благородные природные тона, а последняя карточка подсказывает, каких цветов и принтов мы просим избегать.",
       boardsIntro:
-        "Если вы выбираете между несколькими вариантами, ориентируйтесь прежде всего на эти изображения: всё должно быть утончённым, природным, мягким и элегантным.",
+        "Если вы выбираете между несколькими вариантами, ориентируйтесь прежде всего на эти изображения: всё должно быть мягким, естественным, утончённым и элегантным.",
       womenTitle: "Для девушек",
       menTitle: "Для мужчин",
       avoidTitle: "Просим избегать",
@@ -259,7 +262,7 @@ const translations: Record<Language, PageCopy> = {
       eyebrow: "RSVP",
       title: "Сможете ли вы быть с нами?",
       description:
-        "Пожалуйста, укажите ваше имя, сможете ли вы приехать, из какой страны вы прилетите и сколько гостей мы можем ожидать.",
+        "Пожалуйста, укажите ваше имя, сможете ли вы приехать, из какой страны вы будете добираться и сколько гостей мы можем ожидать.",
       info: [
         "Даты празднования: 4-6 сентября",
         "Главная церемония: 5 сентября",
@@ -269,14 +272,14 @@ const translations: Record<Language, PageCopy> = {
         fullName: "Полное имя",
         fullNamePlaceholder: "Ваше полное имя",
         country: "Страна",
-        countryPlaceholder: "Страна вылета",
+        countryPlaceholder: "Страна, из которой вы приедете",
         attendance: "Сможете ли вы приехать?",
         yes: "Да, я приеду",
         no: "Нет, не смогу",
-        maybe: "Пока не уверена/уверен",
+        maybe: "Пока не уверена / не уверен",
         guests: "Количество гостей",
         message: "Сообщение",
-        messagePlaceholder: "Детали поездки, пожелание или заметка",
+        messagePlaceholder: "Детали поездки, пожелание или тёплая заметка",
         sending: "Отправляем...",
         submit: "Отправить RSVP",
         success: "Спасибо! Ваш ответ получен.",
@@ -299,14 +302,15 @@ const translations: Record<Language, PageCopy> = {
       date: "4.-6. September",
       place: "Lago Maggiore, Italien",
       cta: "RSVP",
-      tapToPlay: "Tippen für Ton",
+      tapToPlay: "Ton einschalten",
       soundOn: "Ton an",
+      mute: "Stumm",
     },
     story: {
       eyebrow: "Eine von Gott geschriebene Liebe",
       title: "Unsere Geschichte",
       description:
-        "Eine Liebesgeschichte in Gottes Timing, voller Tiefe und Schönheit, wie wir sie selbst niemals hätten schreiben können.",
+        "Eine Liebesgeschichte in Gottes vollkommenem Timing, voller Tiefe und Schönheit, wie wir sie selbst niemals hätten schreiben können.",
       quote: [
         "Wenn der Herr eure Liebesgeschichte schreibt, trägt sie eine Schönheit in sich, die kein Mensch erschaffen könnte.",
         "Was Jesus schreibt, ist niemals oberflächlich.",
@@ -318,30 +322,30 @@ const translations: Record<Language, PageCopy> = {
       eyebrow: "Die Einladung",
       title: "Mit Freude in unseren Herzen",
       description:
-        "Wir laden euch herzlich ein, unsere Hochzeit mit uns am wunderschönen Lago Maggiore in Italien zu feiern.",
+        "Wir laden euch von Herzen ein, unsere Hochzeit mit uns am wunderschönen Lago Maggiore in Italien zu feiern.",
       body:
-        "Zwischen Bergluft, stillem Wasser, Kerzenlicht und Septemberhimmel wäre es uns eine große Freude, die Menschen, die wir lieben, zu einem Hochzeitswochenende voller Wärme, Schönheit und Dankbarkeit um uns zu haben.",
+        "Zwischen Bergluft, stillem Wasser, Kerzenlicht und Septemberhimmel wäre es für uns ein großes Geschenk, die Menschen, die wir lieben, um uns zu haben und gemeinsam ein Hochzeitswochenende voller Wärme, Schönheit und Dankbarkeit zu feiern.",
     },
     schedule: {
       eyebrow: "Ablauf",
       title: "Ein Hochzeitswochenende am See",
       description:
-        "Drei Septembertage für Nähe, Freude und wunderschöne gemeinsame Erinnerungen.",
+        "Drei Septembertage voller Nähe, Freude und wunderschöner gemeinsamer Erinnerungen.",
       items: [
         {
           date: "4. September",
-          title: "Anreise & Welcome Gathering",
-          copy: "Wir beginnen mit Umarmungen, Gesprächen bei Sonnenuntergang und einem ruhigen ersten Abend am See.",
+          title: "Anreise & Willkommensabend",
+          copy: "Wir beginnen das Wochenende mit herzlichen Umarmungen, Gesprächen bei Sonnenuntergang und einem ruhigen ersten Abend am See.",
         },
         {
           date: "5. September",
           title: "Hochzeitszeremonie",
-          copy: "Unsere Gelübde, unsere Freude und ein Fest voller Schönheit, Glaube und Liebe.",
+          copy: "Unsere Gelübde, unsere Freude und ein Fest voller Schönheit, Glauben und Liebe.",
         },
         {
           date: "6. September",
-          title: "Feier / Farewell Brunch",
-          copy: "Ein letzter gemeinsamer Morgen, um zu verweilen, dankbar zu sein und das Wochenende im Herzen zu behalten.",
+          title: "Brunch & Abschied",
+          copy: "Ein letzter gemeinsamer Morgen, um noch einmal zusammen zu sein, dankbar zurückzublicken und das Wochenende im Herzen zu bewahren.",
         },
       ],
     },
@@ -349,15 +353,15 @@ const translations: Record<Language, PageCopy> = {
       eyebrow: "Dress Code",
       title: "Sanft, elegant und zeitlos",
       intro:
-        "Liebe Familie und Freunde, wir freuen uns sehr darauf, diesen besonderen Tag mit euch im wunderschönen Italien zu feiern.",
+        "Liebe Familie und Freunde, wir freuen uns von Herzen darauf, diesen besonderen Tag mit euch im wunderschönen Italien zu feiern.",
       atmosphereTitle: "Hochzeitsfarben",
       atmosphereBody:
         "Für unsere Hochzeit wünschen wir uns eine sanfte, elegante und zeitlose Atmosphäre, inspiriert von einem italienischen Garten: natürliche Schönheit, warmes Licht, weiße Blumen, Olivenbäume und die Romantik eines Sommerabends.",
       guideTitle: "So liest man die Palette",
       guideBody:
-        "Wir haben diese Bildtafeln als klarste Orientierung für den gewünschten Look vorbereitet. Die Damenpalette zeigt die sanften romantischen Töne, die Herrenpalette die klassischen natürlichen Nuancen, und die letzte Tafel zeigt die Farben und Muster, die wir freundlich bitten zu vermeiden.",
+        "Wir haben diese Bildtafeln als klare Orientierung für die gewünschte Stimmung vorbereitet. Die Damenpalette zeigt sanfte romantische Nuancen, die Herrenpalette klassische natürliche Töne, und die letzte Tafel zeigt die Farben und Muster, die wir freundlich bitten zu vermeiden.",
       boardsIntro:
-        "Wenn ihr zwischen mehreren Outfits wählt, orientiert euch am besten an diesen Bildern: alles sollte fein, weich, natürlich und zurückhaltend elegant wirken.",
+        "Wenn ihr zwischen mehreren Outfits wählt, orientiert euch am besten an diesen Bildern: alles sollte weich, natürlich, stilvoll und zurückhaltend elegant wirken.",
       womenTitle: "Für Damen",
       menTitle: "Für Herren",
       avoidTitle: "Bitte vermeiden",
@@ -378,14 +382,14 @@ const translations: Record<Language, PageCopy> = {
         fullName: "Vollständiger Name",
         fullNamePlaceholder: "Ihr vollständiger Name",
         country: "Land",
-        countryPlaceholder: "Land der Abreise",
+        countryPlaceholder: "Land, aus dem ihr anreist",
         attendance: "Werdet ihr teilnehmen?",
         yes: "Ja, ich komme",
-        no: "Nein, ich kann leider nicht kommen",
+        no: "Nein, ich kann leider nicht dabei sein",
         maybe: "Noch nicht sicher",
         guests: "Anzahl der Gäste",
         message: "Optionale Nachricht",
-        messagePlaceholder: "Reisedetails, eine Nachricht oder ein Wunsch",
+        messagePlaceholder: "Reisedetails, eine Nachricht oder ein lieber Wunsch",
         sending: "Wird gesendet...",
         submit: "RSVP senden",
         success: "Vielen Dank! Eure Antwort wurde erhalten.",
@@ -447,7 +451,9 @@ export default function HomePage() {
             src="/assets/couple-video-2.mp4"
             tapToPlayLabel={copy.hero.tapToPlay}
             soundOnLabel={copy.hero.soundOn}
+            muteLabel={copy.hero.mute}
             poster="/assets/couple-video-poster.png"
+            objectPosition="center 35%"
           />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(44,34,29,0.3),rgba(44,34,29,0.64))]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(246,218,224,0.18),transparent_30%)]" />
@@ -640,7 +646,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                <div className="mt-8 grid gap-8 lg:grid-cols-2 2xl:grid-cols-3">
                   <DressCodeBoard
                     title={copy.dressCode.womenTitle}
                     src="/assets/dress-code-ladies.png"
@@ -651,11 +657,15 @@ export default function HomePage() {
                     src="/assets/dress-code-gentlemen.png"
                     alt={`${copy.dressCode.menTitle} dress code board`}
                   />
-                  <DressCodeBoard
-                    title={copy.dressCode.avoidTitle}
-                    src="/assets/dress-code-avoid.png"
-                    alt={`${copy.dressCode.avoidTitle} dress code board`}
-                  />
+                  <div className="lg:col-span-2 lg:flex lg:justify-center 2xl:col-span-1 2xl:block">
+                    <div className="w-full max-w-[44rem] 2xl:max-w-none">
+                      <DressCodeBoard
+                        title={copy.dressCode.avoidTitle}
+                        src="/assets/dress-code-avoid.png"
+                        alt={`${copy.dressCode.avoidTitle} dress code board`}
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <p className="mx-auto mt-8 max-w-4xl text-center text-base leading-8 text-stoneink/72">
@@ -715,15 +725,15 @@ function DressCodeBoard({
   alt: string;
 }) {
   return (
-    <div className="rounded-[2rem] border border-white/55 bg-white/96 p-4 shadow-sm md:p-5">
+    <div className="rounded-[2rem] border border-white/55 bg-white/97 p-5 shadow-sm md:p-6">
       <p className="text-xs uppercase tracking-[0.3em] text-blush-600">{title}</p>
-      <div className="relative mt-4 aspect-[1290/1451] overflow-hidden rounded-[1.4rem] border border-stone-100 bg-[#fdf9f4] shadow-sm">
+      <div className="relative mt-5 aspect-[1290/1451] overflow-hidden rounded-[1.5rem] border border-stone-100 bg-[#fdf9f4] shadow-sm">
         <Image
           src={src}
           alt={alt}
           fill
-          className="object-contain p-2"
-          sizes="(max-width: 1024px) 100vw, 33vw"
+          className="object-contain p-3 md:p-4"
+          sizes="(max-width: 768px) 94vw, (max-width: 1536px) 46vw, 30vw"
         />
       </div>
     </div>

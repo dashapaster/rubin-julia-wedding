@@ -496,7 +496,7 @@ export default function HomePage() {
                 title={copy.story.title}
                 description={copy.story.description}
               />
-              <div className="relative mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              <div className="relative mt-8 space-y-6 md:space-y-8">
                 <div className="overflow-hidden rounded-[1.6rem] border border-white/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.97),rgba(248,242,235,0.99))] px-5 py-8 text-center shadow-sm md:rounded-[2rem] md:px-12 md:py-14">
                   <blockquote className="relative mx-auto max-w-4xl text-balance font-display text-xl leading-relaxed text-stoneink sm:text-3xl md:text-[2.35rem]">
                     {copy.story.quote.map((line) => (
@@ -507,21 +507,25 @@ export default function HomePage() {
                     ))}
                   </blockquote>
                 </div>
-                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-                  <div className="relative min-h-[260px] overflow-hidden rounded-[1.8rem] border border-white/60 shadow-glow">
+
+                <div className="grid gap-5 lg:grid-cols-2">
+                  <div className="relative min-h-[25rem] overflow-hidden rounded-[1.8rem] border border-white/60 shadow-glow sm:min-h-[32rem] xl:min-h-[38rem]">
                     <Image
-                      src="/assets/italian-garden-1.png"
-                      alt="Italian garden welcome table illustration"
+                      src="/assets/story-couple-1.png"
+                      alt="Rubin and Julia portrait"
                       fill
                       className="object-cover"
+                      style={{ objectPosition: "center 32%" }}
                     />
                   </div>
-                  <div className="relative min-h-[260px] overflow-hidden rounded-[1.8rem] border border-white/60 shadow-glow">
+
+                  <div className="relative min-h-[25rem] overflow-hidden rounded-[1.8rem] border border-white/60 shadow-glow sm:min-h-[32rem] xl:min-h-[38rem]">
                     <Image
-                      src="/assets/italian-garden-6.png"
-                      alt="Wedding guestbook and candles illustration"
+                      src="/assets/story-couple-2.png"
+                      alt="Rubin and Julia laughing together"
                       fill
                       className="object-cover"
+                      style={{ objectPosition: "center 26%" }}
                     />
                   </div>
                 </div>

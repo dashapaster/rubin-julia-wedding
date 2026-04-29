@@ -20,6 +20,7 @@ export function HeroVideo({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isSoundOn, setIsSoundOn] = useState(false);
   const [hasFailed, setHasFailed] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const mimeType = src.toLowerCase().endsWith(".mov") ? "video/quicktime" : "video/mp4";
 
   useEffect(() => {
@@ -35,8 +36,10 @@ export function HeroVideo({
     const tryPlay = async () => {
       try {
         await video.play();
+        setIsPlaying(true);
       } catch {
         // Mobile browsers may delay autoplay until interaction or reject unsupported media.
+        setIsPlaying(false);
       }
     };
 
@@ -44,8 +47,18 @@ export function HeroVideo({
       void tryPlay();
     };
 
+    const handlePause = () => setIsPlaying(false);
+    const handlePlay = () => setIsPlaying(true);
+    const handleError = () => {
+      setHasFailed(true);
+      setIsPlaying(false);
+    };
+
     video.addEventListener("loadedmetadata", handleReady);
     video.addEventListener("canplay", handleReady);
+    video.addEventListener("pause", handlePause);
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("error", handleError);
     document.addEventListener("visibilitychange", handleReady);
 
     void tryPlay();
@@ -53,14 +66,26 @@ export function HeroVideo({
     return () => {
       video.removeEventListener("loadedmetadata", handleReady);
       video.removeEventListener("canplay", handleReady);
+      video.removeEventListener("pause", handlePause);
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("error", handleError);
       document.removeEventListener("visibilitychange", handleReady);
     };
   }, []);
 
-  const handleTapToPlay = async () => {
+  const handleInteract = async () => {
     const video = videoRef.current;
     if (!video) {
       return;
+    }
+
+    if (!isPlaying) {
+      try {
+        await video.play();
+        setIsPlaying(true);
+      } catch {
+        setIsPlaying(false);
+      }
     }
 
     if (isSoundOn) {
@@ -74,6 +99,7 @@ export function HeroVideo({
       video.volume = 1;
       await video.play();
       setIsSoundOn(true);
+      setIsPlaying(true);
     } catch {
       video.muted = true;
       await video.play().catch(() => undefined);
@@ -103,7 +129,6 @@ export function HeroVideo({
           poster={poster}
           className="hero-video h-full w-full object-cover"
           style={{ objectPosition }}
-          onError={() => setHasFailed(true)}
         >
           <source src={src} type={mimeType} />
         </video>
@@ -111,11 +136,18 @@ export function HeroVideo({
 
       <button
         type="button"
-        onClick={handleTapToPlay}
+        aria-label={isPlaying ? (isSoundOn ? muteLabel : soundOnLabel) : tapToPlayLabel}
+        onClick={handleInteract}
+        className="absolute inset-0 z-10"
+      />
+
+      <button
+        type="button"
+        onClick={handleInteract}
         title={isSoundOn ? muteLabel : soundOnLabel}
         className="absolute bottom-5 right-5 z-20 inline-flex items-center rounded-full border border-white/35 bg-black/20 px-4 py-2 text-[0.65rem] uppercase tracking-[0.24em] text-white backdrop-blur-md transition hover:bg-black/30 sm:bottom-6 sm:right-6"
       >
-        {isSoundOn ? muteLabel : tapToPlayLabel}
+        {!isPlaying ? tapToPlayLabel : isSoundOn ? muteLabel : tapToPlayLabel}
       </button>
     </div>
   );

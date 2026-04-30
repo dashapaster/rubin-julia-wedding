@@ -99,12 +99,7 @@ const translations: Record<Language, PageCopy> = {
       content: {
         lead:
           "When the Lord writes your love story, it carries a beauty no human could ever create.",
-        quote: [
-          "What Jesus writes is never shallow.",
-          "Never random.",
-          "Never late.",
-          "It is full of purpose, full of glory, and full of love.",
-        ],
+        quote: [],
         paragraphs: [
           "Our story is a testimony of His timing and His faithfulness.",
           "The Lord connected us across countries, cultures, distance, and seasons of waiting. What could have seemed impossible to people was never impossible for God. He knew how to lead our steps, how to open the right doors, how to prepare our hearts, and how to bring us to one another in His perfect way.",
@@ -230,12 +225,7 @@ const translations: Record<Language, PageCopy> = {
       content: {
         lead:
           "Когда Господь пишет вашу историю любви, в ней есть красота, которую не смог бы создать ни один человек.",
-        quote: [
-          "То, что пишет Иисус, никогда не бывает поверхностным.",
-          "Никогда не бывает случайным.",
-          "Никогда не приходит слишком поздно.",
-          "В этом всегда есть смысл, слава и любовь.",
-        ],
+        quote: [],
         paragraphs: [
           "Наша история — это свидетельство Его времени и Его верности.",
           "Господь соединил нас через страны, культуры, расстояния и сезоны ожидания. То, что людям могло казаться невозможным, никогда не было невозможным для Бога. Он знал, как направить наши шаги, как открыть нужные двери, как приготовить наши сердца и как привести нас друг к другу Своим совершенным путём.",
@@ -361,12 +351,7 @@ const translations: Record<Language, PageCopy> = {
       content: {
         lead:
           "Wenn der Herr eure Liebesgeschichte schreibt, trägt sie eine Schönheit in sich, die kein Mensch erschaffen könnte.",
-        quote: [
-          "Was Jesus schreibt, ist niemals oberflächlich.",
-          "Niemals zufällig.",
-          "Niemals zu spät.",
-          "Es ist voller Sinn, voller Herrlichkeit und voller Liebe.",
-        ],
+        quote: [],
         paragraphs: [
           "Unsere Geschichte ist ein Zeugnis Seines Timings und Seiner Treue.",
           "Der Herr hat uns über Länder, Kulturen, Entfernungen und Zeiten des Wartens hinweg miteinander verbunden. Was Menschen unmöglich erscheinen konnte, war für Gott niemals unmöglich. Er wusste, wie Er unsere Schritte führen, die richtigen Türen öffnen, unsere Herzen vorbereiten und uns auf Seinem vollkommenen Weg zueinander bringen würde.",
@@ -571,14 +556,16 @@ export default function HomePage() {
                       {copy.story.content.lead}
                     </p>
 
-                    <blockquote className="mt-8 text-center font-display text-lg leading-relaxed text-stoneink/88 sm:text-2xl md:text-[2rem]">
-                      {copy.story.content.quote.map((line) => (
-                        <span key={line}>
-                          {line}
-                          <br />
-                        </span>
-                      ))}
-                    </blockquote>
+                    {copy.story.content.quote.length ? (
+                      <blockquote className="mt-8 text-center font-display text-lg leading-relaxed text-stoneink/88 sm:text-2xl md:text-[2rem]">
+                        {copy.story.content.quote.map((line) => (
+                          <span key={line}>
+                            {line}
+                            <br />
+                          </span>
+                        ))}
+                      </blockquote>
+                    ) : null}
 
                     <div className="mt-10 space-y-5 text-base leading-8 text-stoneink/78 md:text-lg md:leading-9">
                       {copy.story.content.paragraphs.map((paragraph) => (

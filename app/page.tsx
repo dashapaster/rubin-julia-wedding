@@ -48,6 +48,16 @@ type PageCopy = {
       copy: string;
     }>;
   };
+  travel: {
+    eyebrow: string;
+    locationTitle: string;
+    locationValue: string;
+    mapsLabel: string;
+    travelTitle: string;
+    travelIntro: string;
+    airportTitle: string;
+    airportRecommended: string;
+  };
   dressCode: {
     eyebrow: string;
     title: string;
@@ -67,6 +77,8 @@ type PageCopy = {
     title: string;
     description: string;
     info: string[];
+    childrenNoteTitle: string;
+    childrenNoteBody: string;
     form: RsvpFormCopy;
   };
   footer: string;
@@ -142,6 +154,16 @@ const translations: Record<Language, PageCopy> = {
         },
       ],
     },
+    travel: {
+      eyebrow: "Travel & Location",
+      locationTitle: "Wedding Location",
+      locationValue: "Lake Maggiore, Italy",
+      mapsLabel: "Open in Google Maps",
+      travelTitle: "Travel Information",
+      travelIntro: "The nearest airport is Milan International Airport.",
+      airportTitle: "Recommended airport options",
+      airportRecommended: "Milan Malpensa (MXP) — recommended",
+    },
     dressCode: {
       eyebrow: "Dress Code",
       title: "Soft, elegant, and timeless",
@@ -171,6 +193,9 @@ const translations: Record<Language, PageCopy> = {
         "Main ceremony: September 5",
         "Location: Lake Maggiore, Italy",
       ],
+      childrenNoteTitle: "A gentle note",
+      childrenNoteBody:
+        "While little ones are very dear to us, we kindly encourage our guests to join us without children where possible. We hope this gives everyone the chance to relax, celebrate, and enjoy the evening with us.",
       form: {
         fullName: "Full name",
         fullNamePlaceholder: "Your full name",
@@ -268,6 +293,16 @@ const translations: Record<Language, PageCopy> = {
         },
       ],
     },
+    travel: {
+      eyebrow: "Локация и дорога",
+      locationTitle: "Место свадьбы",
+      locationValue: "Озеро Маджоре, Италия",
+      mapsLabel: "Открыть в Google Maps",
+      travelTitle: "Информация о дороге",
+      travelIntro: "Ближайший аэропорт — Milan International Airport.",
+      airportTitle: "Удобные варианты аэропорта",
+      airportRecommended: "Milan Malpensa (MXP) — рекомендуем",
+    },
     dressCode: {
       eyebrow: "Дресс-код",
       title: "Нежно, элегантно и вне времени",
@@ -297,6 +332,9 @@ const translations: Record<Language, PageCopy> = {
         "Главная церемония: 5 сентября",
         "Место: озеро Маджоре, Италия",
       ],
+      childrenNoteTitle: "Небольшая просьба",
+      childrenNoteBody:
+        "Хотя мы очень любим детей, мы по возможности деликатно просим наших гостей присоединиться к нам без малышей. Надеемся, это даст всем возможность расслабиться, отпраздновать и в полной мере насладиться вечером вместе с нами.",
       form: {
         fullName: "Полное имя",
         fullNamePlaceholder: "Ваше полное имя",
@@ -394,6 +432,16 @@ const translations: Record<Language, PageCopy> = {
         },
       ],
     },
+    travel: {
+      eyebrow: "Ort & Anreise",
+      locationTitle: "Hochzeitsort",
+      locationValue: "Lago Maggiore, Italien",
+      mapsLabel: "In Google Maps öffnen",
+      travelTitle: "Reiseinformationen",
+      travelIntro: "Der nächstgelegene Flughafen ist der Milan International Airport.",
+      airportTitle: "Empfohlene Flughafenoptionen",
+      airportRecommended: "Milan Malpensa (MXP) — empfohlen",
+    },
     dressCode: {
       eyebrow: "Dress Code",
       title: "Sanft, elegant und zeitlos",
@@ -423,6 +471,9 @@ const translations: Record<Language, PageCopy> = {
         "Hauptzeremonie: 5. September",
         "Ort: Lago Maggiore, Italien",
       ],
+      childrenNoteTitle: "Eine kleine Bitte",
+      childrenNoteBody:
+        "Auch wenn uns Kinder sehr am Herzen liegen, möchten wir unsere Gäste, wenn möglich, herzlich bitten, ohne Kinder mit uns zu feiern. Wir hoffen, dass so alle den Abend entspannt genießen, mit uns feiern und die gemeinsame Zeit unbeschwert erleben können.",
       form: {
         fullName: "Vollständiger Name",
         fullNamePlaceholder: "Ihr vollständiger Name",
@@ -695,6 +746,70 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
+          <SectionHeading eyebrow={copy.travel.eyebrow} title={copy.travel.locationTitle} />
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            <Reveal className="h-full">
+              <div className="h-full rounded-[2.25rem] border border-white/55 bg-white/92 p-8 shadow-glow backdrop-blur md:p-10">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blush-100/80 text-stoneink">
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      className="h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 21s6-5.7 6-11a6 6 0 1 0-12 0c0 5.3 6 11 6 11Z"
+                      />
+                      <circle cx="12" cy="10" r="2.5" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-blush-600">
+                      {copy.travel.locationTitle}
+                    </p>
+                    <h3 className="mt-4 font-display text-3xl text-stoneink">
+                      {copy.travel.locationValue}
+                    </h3>
+                    <a
+                      href="https://maps.app.goo.gl/sK44amYa4TxuEFAA9?g_st=aw"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-8 inline-flex rounded-full border border-stone-200 bg-white px-6 py-3 text-sm uppercase tracking-[0.18em] text-stoneink transition hover:bg-stone-50"
+                    >
+                      {copy.travel.mapsLabel}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal className="h-full">
+              <div className="h-full rounded-[2.25rem] border border-white/55 bg-white/92 p-8 shadow-glow backdrop-blur md:p-10">
+                <p className="text-xs uppercase tracking-[0.3em] text-blush-600">
+                  {copy.travel.travelTitle}
+                </p>
+                <p className="mt-4 text-lg leading-8 text-stoneink/78">
+                  {copy.travel.travelIntro}
+                </p>
+                <div className="mt-8 rounded-[1.5rem] border border-stone-100 bg-[#fffdfa] p-5">
+                  <p className="text-sm uppercase tracking-[0.24em] text-stoneink/65">
+                    {copy.travel.airportTitle}
+                  </p>
+                  <div className="mt-4 space-y-3 text-base leading-7 text-stoneink/78">
+                    <p>{copy.travel.airportRecommended}</p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         <section id="dress-code" className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
           <Reveal>
             <div className="relative overflow-hidden rounded-[2.5rem] border border-white/55 bg-white/92 p-6 shadow-glow backdrop-blur md:p-10">
@@ -776,6 +891,14 @@ export default function HomePage() {
                     {copy.rsvp.info.map((item) => (
                       <p key={item}>{item}</p>
                     ))}
+                  </div>
+                  <div className="mt-8 rounded-[1.5rem] border border-stone-100 bg-[#fffdfa] p-5">
+                    <p className="text-xs uppercase tracking-[0.28em] text-blush-600">
+                      {copy.rsvp.childrenNoteTitle}
+                    </p>
+                    <p className="mt-3 text-sm leading-7 text-stoneink/72">
+                      {copy.rsvp.childrenNoteBody}
+                    </p>
                   </div>
                 </div>
               </div>

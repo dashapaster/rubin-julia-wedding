@@ -114,8 +114,8 @@ const translations: Record<Language, PageCopy> = {
         quote: [],
         paragraphs: [
           "Our story is a testimony of His timing and His faithfulness.",
-          "The Lord connected us across countries, cultures, distance, and seasons of waiting. What could have seemed impossible to people was never impossible for God. He knew how to lead our steps, how to open the right doors, how to prepare our hearts, and how to bring us to one another in His perfect way.",
-          "Through different nations, different journeys, and many miles between us, Jesus was writing something beautiful. He was teaching us to trust Him deeper, to wait with hope, and to believe that love born from His heart is always worth the journey.",
+          "The Lord connected us across countries, cultures, distance, and seasons of waiting. What may have seemed impossible to people was never impossible for God. He knew how to lead our steps, prepare our hearts, and bring us to one another in His perfect way.",
+          "Through different nations, different journeys, and many miles between us, Jesus was writing something beautiful. He taught us to trust Him more deeply, to wait with hope, and to believe that love born from His heart is always worth the journey.",
           "This is more than our love story.\nIt is a story of God's faithfulness.",
           "And now, with full hearts, we are so grateful to begin this new chapter together as husband and wife, surrounded by the people we love most.",
           "Thank you for being part of our story and celebrating with us the beautiful thing the Lord has done.",
@@ -253,7 +253,7 @@ const translations: Record<Language, PageCopy> = {
         quote: [],
         paragraphs: [
           "Наша история — это свидетельство Его времени и Его верности.",
-          "Господь соединил нас через страны, культуры, расстояния и сезоны ожидания. То, что людям могло казаться невозможным, никогда не было невозможным для Бога. Он знал, как направить наши шаги, как открыть нужные двери, как приготовить наши сердца и как привести нас друг к другу Своим совершенным путём.",
+          "Господь соединил нас через страны, культуры, расстояния и сезоны ожидания. То, что людям могло казаться невозможным, никогда не было невозможным для Бога. Он знал, как направить наши шаги, приготовить наши сердца и привести нас друг к другу Своим совершенным путём.",
           "Через разные страны, разные пути и многие километры между нами Иисус писал нечто прекрасное. Он учил нас глубже доверять Ему, ждать с надеждой и верить, что любовь, рождённая в Его сердце, всегда стоит этого пути.",
           "Это больше, чем просто наша история любви.\nЭто история Божьей верности.",
           "И теперь, с сердцами, полными благодарности, мы счастливы начать эту новую главу вместе как муж и жена, в окружении самых любимых людей.",
@@ -392,7 +392,7 @@ const translations: Record<Language, PageCopy> = {
         quote: [],
         paragraphs: [
           "Unsere Geschichte ist ein Zeugnis Seines Timings und Seiner Treue.",
-          "Der Herr hat uns über Länder, Kulturen, Entfernungen und Zeiten des Wartens hinweg miteinander verbunden. Was Menschen unmöglich erscheinen konnte, war für Gott niemals unmöglich. Er wusste, wie Er unsere Schritte führen, die richtigen Türen öffnen, unsere Herzen vorbereiten und uns auf Seinem vollkommenen Weg zueinander bringen würde.",
+          "Der Herr hat uns über Länder, Kulturen, Entfernungen und Zeiten des Wartens hinweg miteinander verbunden. Was Menschen unmöglich erscheinen konnte, war für Gott niemals unmöglich. Er wusste, wie Er unsere Schritte führen, unsere Herzen vorbereiten und uns auf Seinem vollkommenen Weg zueinander bringen würde.",
           "Durch verschiedene Nationen, unterschiedliche Wege und viele Kilometer zwischen uns schrieb Jesus etwas Wunderschönes. Er lehrte uns, Ihm tiefer zu vertrauen, voller Hoffnung zu warten und zu glauben, dass eine Liebe, die aus Seinem Herzen geboren ist, jeden Weg wert ist.",
           "Das ist mehr als nur unsere Liebesgeschichte.\nEs ist eine Geschichte von Gottes Treue.",
           "Und jetzt sind wir mit erfüllten Herzen unendlich dankbar, dieses neue Kapitel gemeinsam als Mann und Frau zu beginnen, umgeben von den Menschen, die wir am meisten lieben.",
@@ -601,6 +601,28 @@ export default function HomePage() {
                 description={copy.story.description}
               />
               <div className="relative mt-8 space-y-6 md:space-y-8">
+                <div className="grid gap-5 lg:grid-cols-2">
+                  <div className="relative min-h-[25rem] overflow-hidden rounded-[1.8rem] border border-white/60 shadow-glow sm:min-h-[32rem] xl:min-h-[38rem]">
+                    <Image
+                      src="/assets/story-couple-1.png"
+                      alt="Rubin and Julia portrait"
+                      fill
+                      className="object-cover"
+                      style={{ objectPosition: "center 32%" }}
+                    />
+                  </div>
+
+                  <div className="relative min-h-[25rem] overflow-hidden rounded-[1.8rem] border border-white/60 shadow-glow sm:min-h-[32rem] xl:min-h-[38rem]">
+                    <Image
+                      src="/assets/story-couple-2.png"
+                      alt="Rubin and Julia laughing together"
+                      fill
+                      className="object-cover"
+                      style={{ objectPosition: "center 26%" }}
+                    />
+                  </div>
+                </div>
+
                 <div className="rounded-[1.6rem] border border-white/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.97),rgba(248,242,235,0.99))] px-5 py-8 shadow-sm md:rounded-[2rem] md:px-12 md:py-14">
                   <div className="mx-auto max-w-4xl">
                     <p className="text-center font-display text-xl leading-relaxed text-stoneink sm:text-3xl md:text-[2.35rem]">
@@ -634,28 +656,6 @@ export default function HomePage() {
                         {copy.story.content.signature[1]}
                       </p>
                     </div>
-                  </div>
-                </div>
-
-                <div className="grid gap-5 lg:grid-cols-2">
-                  <div className="relative min-h-[25rem] overflow-hidden rounded-[1.8rem] border border-white/60 shadow-glow sm:min-h-[32rem] xl:min-h-[38rem]">
-                    <Image
-                      src="/assets/story-couple-1.png"
-                      alt="Rubin and Julia portrait"
-                      fill
-                      className="object-cover"
-                      style={{ objectPosition: "center 32%" }}
-                    />
-                  </div>
-
-                  <div className="relative min-h-[25rem] overflow-hidden rounded-[1.8rem] border border-white/60 shadow-glow sm:min-h-[32rem] xl:min-h-[38rem]">
-                    <Image
-                      src="/assets/story-couple-2.png"
-                      alt="Rubin and Julia laughing together"
-                      fill
-                      className="object-cover"
-                      style={{ objectPosition: "center 26%" }}
-                    />
                   </div>
                 </div>
               </div>
